@@ -15,7 +15,6 @@ On **2026-09-13**, the machine owner intentionally reinstalled the already-curre
 - `TESTING.md` — sanitized test summary (no serial number, private keys, full `fwupdmgr` JSON, TPM event log, or firmware image)
 - `tools/build_signed_remote.py` — source-only experimental packaging/signing helper for a **separately and lawfully obtained** vendor CAB; it does not perform an update
 - `tools/init_signing_keys.sh` — local key generation for testing; never upload generated private keys
-- `tools/inspect_metadata.py` — read-only metadata inspection and optional container SHA-256 check
 - `examples/firmware.metainfo.xml.template` — non-installable, illustrative metadata with an intentionally missing payload digest
 
 **Not included:** Lenovo's proprietary `.cab`, `.ROM`, `.bin`, `.fd` or other firmware images; generated catalogs or signed firmware bundles; certificates, signing keys, trust roots, machine identifiers, or private-repository Git history.
@@ -26,10 +25,17 @@ These tools are for developers evaluating packaging and metadata only. They do n
 
 ```sh
 python3 tools/build_signed_remote.py --help
-python3 tools/inspect_metadata.py --help
 ```
 
 The experimental builder requires `python3`, `bsdtar`, `fwupdtool`, your own locally generated signing credentials and an independently obtained vendor CAB containing a firmware member plus AppStream metadata. Generated output must stay local unless redistribution permission has been secured.
+
+For read-only inspection of a locally obtained CAB, use fwupd's built-in command rather than a custom inspector:
+
+```sh
+fwupdmgr get-details /path/to/firmware.cab
+```
+
+This command inspects the CAB; it does not check whether a separate `firmware.xml.gz` remote catalog points to the correct filename and container checksum. The former custom `inspect_metadata.py` only performed that narrow packaging sanity check and was removed to avoid maintaining redundant inspection tooling.
 
 All example manifests require validation and completion before use; the sample is **not** an LVFS submission or update-ready artifact. Firmware compatibility, vendor signatures, Secure Boot behavior, recovery and cross-version upgrades are **not validated** by this repository.
 

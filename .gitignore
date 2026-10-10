@@ -1,0 +1,26 @@
+# Keep vendor firmware, locally generated outputs and signing material out of public Git.
+*.cab
+*.CAB
+*.rom
+*.ROM
+*.bin
+*.BIN
+*.fd
+*.FD
+*.efi
+*.EFI
+*.key
+*.pem
+*.p12
+*.pfx
+*.csr
+*.jcat
+*.gz
+SHA256SUMS
+dist/
+signed/
+staging/
+keys/
+inputs/
+__pycache__/
+*.pyc

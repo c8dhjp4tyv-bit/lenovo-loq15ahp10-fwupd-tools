@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Example ONLY: not a publishable release and not install-ready. -->
+<component type="firmware">
+  <id>org.loq15ahp10.community.bios.firmware</id>
+  <name>Lenovo LOQ 15AHP10 System Firmware (research example)</name>
+  <summary>Illustrative fwupd metadata for the LOQ 15AHP10 / 83JG</summary>
+  <description>
+    <p>This is an example manifest for community research. It contains no firmware payload. Do not distribute or install a BIOS image without the firmware rights holder's permission and appropriate validation.</p>
+  </description>
+  <provides>
+    <firmware type="flashed">115cbe64-b198-4519-8022-5250690f65ac</firmware>
+  </provides>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>LicenseRef-proprietary</project_license>
+  <developer_name>Unofficial community research (not Lenovo)</developer_name>
+  <releases>
+    <release version="REPLACE_WITH_VERIFIED_VERSION">
+      <checksum type="sha256" filename="REPLACE_WITH_PAYLOAD_FILENAME" target="content">REPLACE_WITH_SHA256</checksum>
+    </release>
+  </releases>
+</component>
